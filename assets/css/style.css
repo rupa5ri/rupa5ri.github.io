@@ -1096,3 +1096,310 @@ section .container {
     transform: translateX(-50%);
   }
 }
+
+/*--------------------------------------------------------------
+# Skills Section Hover Effects
+--------------------------------------------------------------*/
+
+#skills .icon-box {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+#skills .icon-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(18, 214, 64, 0.1), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+#skills .icon-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+}
+
+#skills .icon-box:hover::before {
+  left: 100%;
+}
+
+#skills .icon-box h4 {
+  transition: all 0.4s ease;
+}
+
+#skills .icon-box:hover h4 {
+  color: #12d640;
+  letter-spacing: 0.5px;
+}
+
+#skills .icon-box img {
+  transition: all 0.3s ease;
+}
+
+#skills .icon-box:hover img {
+  filter: brightness(1.15) drop-shadow(0 0 5px rgba(18, 214, 64, 0.2));
+  transform: scale(1.08);
+}
+
+/*--------------------------------------------------------------
+# Achievements Section
+--------------------------------------------------------------*/
+
+.achievements-card {
+  background: linear-gradient(135deg, #0f2847 0%, #1a3f5a 100%);
+  border-left: 5px solid #12d640;
+  border-radius: 8px;
+  padding: 30px 25px;
+  margin-bottom: 25px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 15px rgba(18, 214, 64, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievements-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(18, 214, 64, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+  transition: all 0.4s ease;
+}
+
+.achievements-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(18, 214, 64, 0) 0%, rgba(18, 214, 64, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.achievements-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(18, 214, 64, 0.15);
+  border-left-color: #1ec752;
+  background: linear-gradient(135deg, #1a3f5a 0%, #0f2847 100%);
+}
+
+.achievements-card:hover::before {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(18, 214, 64, 0.08) 0%, transparent 70%);
+  transform: translate(10%, -50%);
+}
+
+.achievements-card:hover::after {
+  opacity: 1;
+}
+
+.achievements-card.ms {
+  border-left-color: #0066cc;
+}
+
+.achievements-card.ms::before {
+  background: radial-gradient(circle, rgba(0, 128, 255, 0.1) 0%, transparent 70%);
+}
+
+.achievements-card.ms:hover {
+  border-left-color: #0080ff;
+  box-shadow: 0 8px 20px rgba(0, 128, 255, 0.15);
+  background: linear-gradient(135deg, #1a4d7a 0%, #0f2847 100%);
+}
+
+.achievements-card.ms:hover::before {
+  background: radial-gradient(circle, rgba(0, 128, 255, 0.08) 0%, transparent 70%);
+}
+
+.achievements-card.ms::after {
+  background: linear-gradient(135deg, rgba(0, 128, 255, 0) 0%, rgba(0, 128, 255, 0.1) 100%);
+}
+
+.achievements-card.tcs {
+  border-left-color: #00b4e4;
+}
+
+.achievements-card.tcs::before {
+  background: radial-gradient(circle, rgba(0, 180, 228, 0.1) 0%, transparent 70%);
+}
+
+.achievements-card.tcs:hover {
+  border-left-color: #00d4ff;
+  box-shadow: 0 8px 20px rgba(0, 180, 228, 0.15);
+  background: linear-gradient(135deg, #0a3a4a 0%, #051f2a 100%);
+}
+
+.achievements-card.tcs:hover::before {
+  background: radial-gradient(circle, rgba(0, 180, 228, 0.08) 0%, transparent 70%);
+}
+
+.achievements-card.tcs::after {
+  background: linear-gradient(135deg, rgba(0, 180, 228, 0) 0%, rgba(0, 180, 228, 0.1) 100%);
+}
+
+.achievements-card.simc {
+  border-left-color: #a855f7;
+}
+
+.achievements-card.simc::before {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+}
+
+.achievements-card.simc:hover {
+  border-left-color: #c084fc;
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+  background: linear-gradient(135deg, #3a1a4a 0%, #2a0f3a 100%);
+}
+
+.achievements-card.simc:hover::before {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+}
+
+.achievements-card.simc::after {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0) 0%, rgba(168, 85, 247, 0.1) 100%);
+}
+
+.achievement-org {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  background: rgba(18, 214, 64, 0.15);
+  color: #12d640;
+  transition: all 0.4s ease;
+}
+
+.achievements-card.ms .achievement-org {
+  background: rgba(0, 102, 204, 0.15);
+  color: #0080ff;
+}
+
+.achievements-card.tcs .achievement-org {
+  background: rgba(0, 180, 228, 0.15);
+  color: #00d4ff;
+}
+
+.achievements-card.simc .achievement-org {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+.achievements-card:hover .achievement-org {
+  background: rgba(18, 214, 64, 0.15);
+  transform: scale(1.05);
+  letter-spacing: 1.5px;
+}
+
+.achievements-card.ms:hover .achievement-org {
+  background: rgba(0, 128, 255, 0.15);
+}
+
+.achievements-card.tcs:hover .achievement-org {
+  background: rgba(0, 180, 228, 0.15);
+}
+
+.achievements-card.simc:hover .achievement-org {
+  background: rgba(168, 85, 247, 0.15);
+}
+
+.achievement-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  transition: all 0.4s ease;
+}
+
+.achievements-card:hover .achievement-title {
+  color: #fff;
+  text-shadow: none;
+  letter-spacing: 0.5px;
+}
+
+.achievements-card.ms:hover .achievement-title {
+  color: #fff;
+  text-shadow: none;
+}
+
+.achievements-card.tcs:hover .achievement-title {
+  color: #fff;
+  text-shadow: none;
+}
+
+.achievements-card.simc:hover .achievement-title {
+  color: #fff;
+  text-shadow: none;
+}
+
+.achievement-description {
+  font-size: 14px;
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: 0;
+  transition: all 0.4s ease;
+}
+
+.achievements-card:hover .achievement-description {
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.achievement-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 15px;
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  transition: all 0.4s ease;
+}
+
+.achievement-badge.award {
+  background: rgba(255, 87, 34, 0.2);
+  color: #ff5722;
+}
+
+.achievement-badge.certification {
+  background: rgba(156, 39, 176, 0.2);
+  color: #d946ef;
+}
+
+.achievements-card:hover .achievement-badge {
+  transform: scale(1.1);
+  background: rgba(255, 193, 7, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.1);
+}
+
+.achievements-card:hover .achievement-badge.award {
+  background: rgba(255, 87, 34, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.1);
+}
+
+.achievements-card:hover .achievement-badge.certification {
+  background: rgba(156, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.1);
+}
