@@ -895,6 +895,7 @@ section .container {
   padding: 20px;
   width: 100%;
   background: #09203a;
+  transition: all ease-in-out 0.3s;
 }
 
 .contact .info-box i.bx {
@@ -904,6 +905,7 @@ section .container {
   padding: 14px;
   float: left;
   background: rgba(255, 255, 255, 0.1);
+  transition: all ease-in-out 0.3s;
 }
 
 .contact .info-box h3 {
@@ -911,6 +913,7 @@ section .container {
   color: #28a745;
   font-weight: 700;
   margin: 10px 0 8px 68px;
+  transition: all ease-in-out 0.3s;
 }
 
 .contact .info-box p {
@@ -919,6 +922,7 @@ section .container {
   line-height: 24px;
   font-size: 14px;
   margin: 0 0 0 68px;
+  transition: all ease-in-out 0.3s;
 }
 
 .contact .info-box .social-links {
@@ -937,6 +941,16 @@ section .container {
 
 .contact .info-box .social-links a:hover {
   color: #12d640;
+}
+
+.contact .info-box:hover {
+  background: #042e5f;
+  border-color: #1c7d32;
+}
+
+.contact .info-box:hover i.bx {
+  background: #1c7d32;
+  color: #fff;
 }
 
 .contact .php-email-form {
