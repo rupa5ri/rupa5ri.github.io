@@ -29,7 +29,7 @@
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css?v=2" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -53,6 +53,7 @@
 </head>
 
 <body>
+  <canvas id="backgroundCanvas"></canvas>
   
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
@@ -680,8 +681,86 @@
     });
   </script>
 
-  <!-- Cursor Trail Effect -->
+  <!-- Cursor Trail & Background Effects -->
   <script type="text/javascript">
+    // create a full‑screen canvas for subtle background particles
+    const bgCanvas = document.createElement('canvas');
+    bgCanvas.id = 'backgroundCanvas';
+    bgCanvas.style.position = 'fixed';
+    bgCanvas.style.top = '0';
+    bgCanvas.style.left = '0';
+    bgCanvas.style.width = '100%';
+    bgCanvas.style.height = '100%';
+    bgCanvas.style.zIndex = '-1';
+    bgCanvas.style.pointerEvents = 'none';
+    document.body.appendChild(bgCanvas);
+    const bgCtx = bgCanvas.getContext('2d');
+    bgCanvas.width = window.innerWidth;
+    bgCanvas.height = window.innerHeight;
+
+    const bgParticles = [];
+    class BGParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * bgCanvas.width;
+        this.y = Math.random() * bgCanvas.height;
+        this.vx = (Math.random() - 0.5) * 0.2;
+        this.vy = (Math.random() - 0.5) * 0.2;
+        // smaller radius to be less distracting
+        this.radius = Math.random() * 1.5 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > bgCanvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > bgCanvas.height) this.vy *= -1;
+      }
+      draw() {
+        // lighter, semi-transparent green
+        bgCtx.fillStyle = 'rgba(18,214,64,0.4)';
+        bgCtx.beginPath();
+        bgCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        bgCtx.fill();
+      }
+    }
+    for (let i = 0; i < 60; i++) {
+      bgParticles.push(new BGParticle());
+    }
+    function animateBG() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      // update & draw nodes
+      bgParticles.forEach(p => { p.update(); p.draw(); });
+      // draw connecting lines
+      for (let i = 0; i < bgParticles.length; i++) {
+        for (let j = i + 1; j < bgParticles.length; j++) {
+          const p1 = bgParticles[i];
+          const p2 = bgParticles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            const alpha = 1 - dist / 100;
+            // make connecting lines very subtle
+            bgCtx.strokeStyle = 'rgba(18,214,64,' + alpha * 0.2 + ')';
+            bgCtx.lineWidth = 0.7;
+            bgCtx.beginPath();
+            bgCtx.moveTo(p1.x, p1.y);
+            bgCtx.lineTo(p2.x, p2.y);
+            bgCtx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateBG);
+    }
+    animateBG();
+    window.addEventListener('resize', () => {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+    });
+
+    // cursor trail
     const canvas = document.createElement('canvas');
     canvas.id = 'cursorTrail';
     canvas.style.position = 'fixed';

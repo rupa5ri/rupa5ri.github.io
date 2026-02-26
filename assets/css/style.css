@@ -18,13 +18,32 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #1c2841;
+  /* using a dark slate gray tone for the overall page background */
+  background: #1a242f; /* Dark Slate Gray 2 variant */
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
+  z-index: -2;
 }
+
+/* full-screen canvas for subtle moving particles behind the page */
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ensure main content sits above the canvases */
+#header, section {
+  position: relative;
+  z-index: 1;
+}   
 
 @media (min-width: 1024px) {
   body::before {
